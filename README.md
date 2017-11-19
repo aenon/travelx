@@ -7,6 +7,14 @@ travelx - Travel destinations
 git clone https://github.com/aenon/travelx.git
 cd travelx
 npm install
+```
+## Build
+```bash
+npm run build
+```
+
+## Start
+```bash
 npm start
 ```
 
