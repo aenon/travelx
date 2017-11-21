@@ -1,7 +1,7 @@
 {
   "name": "travelx",
   "version": "0.0.1",
-  "description": "A simple app built with alt and react",
+  "description": "React and alt.js app showing travel destinations",
   "main": "server.js",
   "dependencies": {
     "alt": "^0.16.0",
@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "browserify -t [reactify --es6] src/App.jsx > build/app.js",
-    "start": "npm run build && xdg-open 'index.html' "
+    "start": "npm run build && open 'index.html' "
   },
   "author": "Xilin Sun <s.sn.giraffe@gmail.com",
   "license": "BSD"
