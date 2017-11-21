@@ -1,3 +1,7 @@
+// travelx - react and alt.js app showing travel destinations
+
+// LocationActions.js - require alt, a flux compliant library for JavaScript applications
+
 // require alt in each action and stores
 var alt = require('../alt')
 
