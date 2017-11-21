@@ -58,7 +58,8 @@ typings/
 .env
 
 
-build/
+build/*
+!build/README.md
 coverage/
 .eslintcache
 package-lock.json
