@@ -1,6 +1,6 @@
 # travelx
 
-travelx - react and alt.js app showing travel destinations
+travelx - `react` and `alt.js` application showing travel destinations
 
 
 ## Getting Started
@@ -28,27 +28,97 @@ python -m SimpleHTTPServer 3000
 
 and enter the URL `http://localhost:3000` in the browser.
 
-## Files
+## Data flow
 
+This application follows the [flux dataflow](https://facebook.github.io/flux/docs/overview.html).
+
+The flux dataflow:
+
+```
+                  +------------+
+                  |            |
+                  | Action     <----------------------------+
+                  |            |                            |
+                  +-----+------+                            |
+                        |                                   |
++-----------+     +-----v------+    +-----------+     +-----+------+
+|           |     |            |    |           |     |            |
+| Action    +-----> Dispatcher +----> Store     +-----> View       |
+|           |     |            |    |           |     |            |
++-----------+     +------------+    +-----------+     +------------+
+```
+
+`alt.js` handles the dispatcher. The dataflow of this app is like:
+
+```
+          +---------------------------------------------+
+          |                                             |
++---------v-------+          +----------------+   +-----+-----+
+|                 | dispatch |                |   |           |
+| LocationActions +----------> LocationStore  +---> Locations |
+|                 |          | FavoritesStore |   |           |
++-----------------+          |                |   +-----------+
+                             +----------------+
+```
+
+### Stores
+
+* LocationStore 
+* FaveroutesStore
+
+### Action
+
+LocationActions
+
+* updateLocations
+* fetchLocations
+* locationsFailed
+* favoriteLocation
+
+### View
+
+Locations
+
+* AltContainer store={LocationStore}
+* AltContainer store={FavoritesStore}
+
+## Folder structure
+
+The folder structure looks like
+
+```
 ajax-loader.gif
-build
+build/
 index.html
 package.json
 README.md
-src
-├── actions
+src/
+├── actions/
 │   └── LocationActions.js
-├── components
+├── components/
 │   └── Locations.jsx
-├── sources
+├── sources/
 │   └── LocationSource.js
-├── stores
+├── stores/
 │   ├── FavoritesStore.js
 │   └── LocationStore.js
 ├── alt.js
 └── App.jsx
+```
 
-<img src="https://facebook.github.io/flux/img/flux-simple-f8-diagram-with-client-action-1300w.png" width="400px" alt="flux dataflow">
+
+### package.json
+
+* dependencies: `alt` and `react`;
+* devDependencies: `browserify` and `reactify`.
+
+### index.html
+
+Displays the app with
+
+```html
+<script src="build/app.js"></script>
+```
 
 ### alt.js
 
